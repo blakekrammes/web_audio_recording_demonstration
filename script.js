@@ -1,10 +1,11 @@
-let recorderButton = document.getElementById('recorder-button');
-let recorderButtonDiv = document.getElementById('recorder-button-div');
-let audioElement = document.getElementById('audio');
-let webAudioRecorder;
-let currentlyRecording = false;
-let getUserMediaStream;
+let recorderButton = document.getElementById('recorder-button'); // the button to start and stop the recording
+let recorderButtonDiv = document.getElementById('recorder-button-div'); // the styled div that looks like a record button 
+let audioElement = document.getElementById('audio'); // the audio element that we will feed our recording to
+let webAudioRecorder; // our WebAudioRecorder.js recorder yet to be instantiated
+let currentlyRecording = false; // a boolean to keep track of whether recording is taking place
+let getUserMediaStream; // our stream from getUserMedia
 
+// event listener on our record button
 recorderButton.addEventListener('click', () => {
   // the options object determining what media type(s) to capture
   let options = { 'audio': true, 'video': false };
