@@ -67,6 +67,10 @@ recorderButton.addEventListener('click', () => {
     });
   }
   else {
+    // set this to the array of audio tracks in our getUserMedia stream. In this case we only have one.
+    let audioTrack = getUserMediaStream.getAudioTracks()[0];
+    // stop that track and end the stream
+    audioTrack.stop();
     // this finishes things up and calls webAudioRecorder.onComplete
     webAudioRecorder.finishRecording();
     currentlyRecording = false;
