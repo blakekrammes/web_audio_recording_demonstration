@@ -1,0 +1,18 @@
+#recorder-button {
+    border: none;
+    cursor: pointer;
+  }
+  
+  #recorder-button-div {
+    background-color: red;
+    border: 3px solid rgba(0,0,0,.5);
+    border-radius: 50%;
+    height: 80px;
+    transition: .3s;
+    width: 80px;
+  }
+  
+  #recorder-button-div:hover {
+    opacity: .9;
+    transition: .3s;
+  }
