@@ -5,7 +5,7 @@ let webAudioRecorder; // our WebAudioRecorder.js recorder yet to be instantiated
 let currentlyRecording = false; // a boolean to keep track of whether recording is taking place
 let getUserMediaStream; // our stream from getUserMedia
 
-// event listener on our record button
+// listen for clicks on the record button to begin the stream and recording
 recorderButton.addEventListener('click', () => {
   // the options object determining what media type(s) to capture
   let options = { 'audio': true, 'video': false };
@@ -26,6 +26,8 @@ recorderButton.addEventListener('click', () => {
       // when we need to stop the stream created by getUserMedia 
       getUserMediaStream = stream;
       // the AudioContext that will handle our audio stream
+      // if you're in Safari or an older Chrome, you can't use the regular audio context so provide this line to use webkitAudioContext
+      let AudioContext = window.AudioContext ||  window.webkitAudioContext;
       let audioContext = new AudioContext();
       // an audio node that we can feed to a new WebAudioRecorder so we can record/encode the audio data
       let source = audioContext.createMediaStreamSource(stream);
@@ -71,6 +73,7 @@ recorderButton.addEventListener('click', () => {
     // set this to the array of audio tracks in our getUserMedia stream. In this case we only have one.
     let audioTrack = getUserMediaStream.getAudioTracks()[0];
     // stop that track and end the stream
+    // this is not absolutely necessary, but it stops the browser streaming audio inbetween recordings so you should probably do it
     audioTrack.stop();
     // this finishes things up and calls webAudioRecorder.onComplete
     webAudioRecorder.finishRecording();
