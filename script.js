@@ -51,7 +51,7 @@ recorderButton.addEventListener('click', () => {
         let audioElementSource = window.URL.createObjectURL(blob);
         // set this URL as the src attribute of our audio element
         audioElement.src = audioElementSource;
-        // add controls so we can start and pause at will
+        // add controls so we can see the audio element on the page
         audioElement.controls = true;
         // reset the styles of the button's child div to look like a record button
         recorderButtonDiv.style.backgroundColor = 'red';
